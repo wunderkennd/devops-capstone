@@ -10,6 +10,8 @@ python_version = "3.7"
 starlette = "*"
 typesystem = "*"
 databases = {extras = ["postgres"],version = "*"}
+fastapi = "*"
+uvicorn = "*"
 
 [dev-packages]
 black = "==19.3b0"

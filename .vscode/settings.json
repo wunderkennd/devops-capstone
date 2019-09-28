@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/Users/ksylvain/.local/share/virtualenvs/devops_capstone-Op-8tDzV/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.formatting.blackArgs": ["--line-length", "100"],
+    "python.autoComplete.addBrackets": true,
+    "python.linting.enabled": true
+}
