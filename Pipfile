@@ -12,6 +12,7 @@ typesystem = "*"
 databases = {extras = ["postgres"],version = "*"}
 fastapi = "*"
 uvicorn = "*"
+loguru = "*"
 
 [dev-packages]
 black = "==19.3b0"

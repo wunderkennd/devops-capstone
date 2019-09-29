@@ -151,7 +151,9 @@ init-dev:
 	pip install pipenv
 	pipenv install --dev
 
-
+generate-requirements:
+	pipenv lock -r > requirements.txt
+	pipenv lock -r -d > dev-requirements.txt
 
 deploy_init:
 
@@ -167,6 +169,8 @@ test:
 	# python -m pytest -vv --cov=myrepolib tests/*.py
 	# python -m pytest --nbval notebook.ipynb
 # 	pipenv run pytest tests
+	# updates Pipfile.lock assumign tests have been passed
+	pipenv lock
 
 ## Tests a function from a given file path within a lambda environment.
 ## See for more information https://github.com/lambci/docker-lambda
@@ -175,6 +179,8 @@ local-test:
 
 lambda-test:
 	docker run -it -v $(PWD):/var/task -v $(HOME)/.aws:/root/.aws -p 8081:80 lambci/lambda:build-python3.7 python $(path)
+	# updates Pipfile.lock assumign tests have been passed
+	pipenv lock
 	# docker run [--rm] -v <code_dir>:/var/task [-v <layer_dir>:/opt] lambci/lambda:<runtime> [<handler>] [<event>]
     # For large events you can pipe them into stdin if you set DOCKER_LAMBDA_USE_STDIN (on any runtime)
     # echo '{"some": "event"}' | docker run --rm -v "$PWD":/var/task -i -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:nodejs8.10
